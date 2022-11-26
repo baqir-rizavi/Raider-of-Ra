@@ -15,8 +15,7 @@ public class ThirdPersonShooter : MonoBehaviour
     [SerializeField] float aimSensitivity;
     [SerializeField] GameObject crosshair;
     [SerializeField] LayerMask aimMask = new LayerMask();
-    [SerializeField] Transform test;
-    [Header("Gun")]
+    [Header("Gun Parameters")]
     [SerializeField] Transform gun;
     [SerializeField] Transform gunPoint;
     [SerializeField] Transform muzzleFlash;
@@ -26,6 +25,9 @@ public class ThirdPersonShooter : MonoBehaviour
     [SerializeField] Transform targetObjchest;
     [SerializeField] Rig headRig;
     [SerializeField] Rig chestRig;
+    [Header("Hit Particle")]
+    [SerializeField] Transform test;
+    [SerializeField] Transform bullethole;
 
     StarterAssetsInputs staInputs;
     ThirdPersonController tpController;
@@ -49,6 +51,7 @@ public class ThirdPersonShooter : MonoBehaviour
             headRig.weight = 1;
             chestRig.weight = 0.6f;
             tpController.SetRotation(false);
+            tpController.SetMovement(false);
             aimCam.gameObject.SetActive(true);
             crosshair.SetActive(true);
             gun.gameObject.SetActive(true);
@@ -77,6 +80,7 @@ public class ThirdPersonShooter : MonoBehaviour
         else
         {
             tpController.SetRotation(true);
+            tpController.SetMovement(true);
             aimCam.gameObject.SetActive(false);
             crosshair.SetActive(false);
             gun.gameObject.SetActive(false);
@@ -96,7 +100,12 @@ public class ThirdPersonShooter : MonoBehaviour
             //TODO: make a particle system.
             Instantiate(test, hit.point, Quaternion.identity);
         }
+        if (hit.transform.CompareTag("wall"))
+        {
+            Debug.Log("wall");
+            Instantiate(bullethole, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(Vector3.up, hit.normal));
 
+        }
         // PUT OTHER TAGGED OBJECTS HERE
 
     }

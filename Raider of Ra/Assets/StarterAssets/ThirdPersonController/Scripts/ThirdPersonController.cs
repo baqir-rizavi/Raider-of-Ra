@@ -95,6 +95,7 @@ namespace StarterAssets
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
         private bool _rotation = true;
+        private bool _movement = true;
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -281,14 +282,18 @@ namespace StarterAssets
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
-            _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
+            if (_movement)
+                _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
             // update animator if using character
             if (_hasAnimator)
             {
-                _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                if (_movement)
+                {
+                    _animator.SetFloat(_animIDSpeed, _animationBlend);
+                    _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                }
             }
         }
 
@@ -435,49 +440,54 @@ namespace StarterAssets
             _rotation = rot;
         }
 
+        public void SetMovement(bool m)
+        {
+            _movement = m;
+        }
+
         //private void OnAnimatorIK(int layerIndex)
         //{
-            ////Debug.Log("hello");
-            //Animator anim = _animator;
-            //// Set the weights of left and right feet to the current value defined by the curve in our animations.
-            //anim.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1f);
-            //anim.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1f);
-            //anim.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1f);
-            //anim.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1f);
+        ////Debug.Log("hello");
+        //Animator anim = _animator;
+        //// Set the weights of left and right feet to the current value defined by the curve in our animations.
+        //anim.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1f);
+        //anim.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1f);
+        //anim.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1f);
+        //anim.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1f);
 
-            //// Left Foot
-            //RaycastHit hit;
-            //// We cast our ray from above the foot in case the current terrain/floor is above the foot position.
-            //Ray ray = new Ray(anim.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
-            //if (Physics.Raycast(ray, out hit, DistanceFromAnckleToGround + 1f, GroundLayers))
-            //{
-            //    Debug.Log("Left");
+        //// Left Foot
+        //RaycastHit hit;
+        //// We cast our ray from above the foot in case the current terrain/floor is above the foot position.
+        //Ray ray = new Ray(anim.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
+        //if (Physics.Raycast(ray, out hit, DistanceFromAnckleToGround + 1f, GroundLayers))
+        //{
+        //    Debug.Log("Left");
 
-            //    // We're only concerned with objects that are tagged as "Walkable"
-            //    //if (hit.transform.tag == "Walkable")
-            //    //{
+        //    // We're only concerned with objects that are tagged as "Walkable"
+        //    //if (hit.transform.tag == "Walkable")
+        //    //{
 
-            //        Vector3 footPosition = hit.point; // The target foot position is where the raycast hit a walkable object...
-            //        footPosition.y += DistanceFromAnckleToGround; // ... taking account the distance to the ground we added above.
-            //        anim.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
-            //        anim.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(transform.forward, hit.normal));
+        //        Vector3 footPosition = hit.point; // The target foot position is where the raycast hit a walkable object...
+        //        footPosition.y += DistanceFromAnckleToGround; // ... taking account the distance to the ground we added above.
+        //        anim.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
+        //        anim.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(transform.forward, hit.normal));
 
-            //    //}
+        //    //}
 
-            //}
+        //}
 
-            //// Right Foot
-            //ray = new Ray(anim.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down);
-            //if (Physics.Raycast(ray, out hit, DistanceFromAnckleToGround + 1f, GroundLayers))
-            //{
-            //    Debug.Log("Right");
+        //// Right Foot
+        //ray = new Ray(anim.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down);
+        //if (Physics.Raycast(ray, out hit, DistanceFromAnckleToGround + 1f, GroundLayers))
+        //{
+        //    Debug.Log("Right");
 
-            //    Vector3 footPosition = hit.point;
-            //        footPosition.y += DistanceFromAnckleToGround;
-            //        anim.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
-            //        anim.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.LookRotation(transform.forward, hit.normal));
+        //    Vector3 footPosition = hit.point;
+        //        footPosition.y += DistanceFromAnckleToGround;
+        //        anim.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
+        //        anim.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.LookRotation(transform.forward, hit.normal));
 
-            //}
+        //}
         //}
     }
 }
