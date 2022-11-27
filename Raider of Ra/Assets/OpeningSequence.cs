@@ -1,3 +1,4 @@
+using Cinemachine;
 using PathCreation.Examples;
 using StarterAssets;
 using System.Collections;
@@ -10,6 +11,7 @@ public class OpeningSequence : MonoBehaviour
     [SerializeField] pathFollower p;
     [SerializeField] Transform upperRotor;
     [SerializeField] Transform backRotor;
+    [SerializeField] CinemachineVirtualCamera heliCam;
     Spinner spinner;
     Spinner spinner2;
     ThirdPersonController pp;
@@ -32,6 +34,7 @@ public class OpeningSequence : MonoBehaviour
         pp.SetRotation(false);
         pp.SetMovement(false);
 
+        heliCam.gameObject.SetActive(true);
         spinner = upperRotor.GetComponent<Spinner>();
         spinner2 = backRotor.GetComponent<Spinner>();
     }
@@ -41,6 +44,9 @@ public class OpeningSequence : MonoBehaviour
     {
         if (p.IsCompleted())
         {
+            if (heliCam)
+                heliCam.gameObject.SetActive(false);
+
             animator.enabled = true;
             characterController.enabled = true;
             pp.SetRotation(true);
@@ -49,11 +55,13 @@ public class OpeningSequence : MonoBehaviour
             player.parent = null;
             SpeedController(spinner);
             SpeedController(spinner2);
+            Destroy(heliCam);
             if (spinner.GetSpeed() < 0.2f && spinner2.GetSpeed() < 0.2f)
             {
                 Destroy(this);
             }
         }
+        p.DecreaseSpeedBeforeComplete();
     }
 
     void SpeedController(Spinner s)

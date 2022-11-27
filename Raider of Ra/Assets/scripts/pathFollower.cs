@@ -12,11 +12,14 @@ public class pathFollower : MonoBehaviour
     [SerializeField] bool rotation = false;
     float dstTravelled;
     Vector3 pos = Vector3.zero;
+    Vector3 oldVector = Vector3.zero;
     bool completed = false;
 
     private void Start()
     {
         transform.rotation = pathCreator.path.GetRotationAtDistance(5f);
+        oldVector = pathCreator.path.GetPoint(pathCreator.path.localPoints.Length - 20) - transform.position;
+        oldVector = oldVector.normalized;
     }
     // Update is called once per frame
     void Update()
@@ -29,7 +32,6 @@ public class pathFollower : MonoBehaviour
 
         if (transform.position == pathCreator.path.GetPoint(pathCreator.path.localPoints.Length - 1))
         {
-            //Debug.Log("c");
             completed = true;
             //Destroy(pathCreator);
         }
@@ -38,5 +40,15 @@ public class pathFollower : MonoBehaviour
     public bool IsCompleted()
     {
         return completed;
+    }
+
+    public void DecreaseSpeedBeforeComplete()
+    {
+        if (transform.position == pathCreator.path.GetPoint(pathCreator.path.localPoints.Length - 20))
+        {
+            //speed = Mathf.Lerp(speed, 3f, Time.deltaTime * 2f);
+            Debug.Log("c");
+            speed = 3f;
+        }
     }
 }
