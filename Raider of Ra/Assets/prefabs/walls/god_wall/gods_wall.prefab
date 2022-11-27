@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4408034693303718218}
   m_Layer: 0
   m_Name: gods_wall
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7998676244352427103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 584.62, y: 4, z: 215.73}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 149.74628, y: 121.49451, z: 100.880005}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

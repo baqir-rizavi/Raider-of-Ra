@@ -20,6 +20,8 @@ public class OpeningSequence : MonoBehaviour
     ThirdPersonShooter thirdPersonShooter;
 
 
+    bool rightPlayer = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,11 @@ public class OpeningSequence : MonoBehaviour
     {
         if (p.IsCompleted())
         {
+            if (!rightPlayer)
+            {
+                player.position += player.right * 2f;
+                rightPlayer = true;
+            }
             if (heliCam)
                 heliCam.gameObject.SetActive(false);
 
@@ -55,13 +62,14 @@ public class OpeningSequence : MonoBehaviour
             player.parent = null;
             SpeedController(spinner);
             SpeedController(spinner2);
-            Destroy(heliCam);
+            heliCam.gameObject.SetActive(false);
             if (spinner.GetSpeed() < 0.2f && spinner2.GetSpeed() < 0.2f)
             {
                 Destroy(this);
             }
         }
-        p.DecreaseSpeedBeforeComplete();
+        if (Time.time > 63f)
+            p.DecreaseSpeed();
     }
 
     void SpeedController(Spinner s)

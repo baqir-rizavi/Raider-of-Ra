@@ -42,13 +42,10 @@ public class pathFollower : MonoBehaviour
         return completed;
     }
 
-    public void DecreaseSpeedBeforeComplete()
-    {
-        if (transform.position == pathCreator.path.GetPoint(pathCreator.path.localPoints.Length - 20))
-        {
-            //speed = Mathf.Lerp(speed, 3f, Time.deltaTime * 2f);
-            Debug.Log("c");
-            speed = 3f;
-        }
+    public void DecreaseSpeed()
+    {   
+        speed = Mathf.Lerp(speed, 2f, Time.deltaTime * 0.5f);
+        if (speed <= 2f)
+            speed = Mathf.Lerp(speed, 0.1f, Time.deltaTime * 0.5f);
     }
 }

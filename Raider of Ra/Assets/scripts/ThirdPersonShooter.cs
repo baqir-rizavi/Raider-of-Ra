@@ -26,8 +26,9 @@ public class ThirdPersonShooter : MonoBehaviour
     [SerializeField] Rig headRig;
     [SerializeField] Rig chestRig;
     [Header("Hit Particle")]
-    [SerializeField] Transform test;
+    [SerializeField] Transform sandParticle;
     [SerializeField] Transform bullethole;
+    [SerializeField] Transform wallParticle;
 
     StarterAssetsInputs staInputs;
     ThirdPersonController tpController;
@@ -97,14 +98,16 @@ public class ThirdPersonShooter : MonoBehaviour
   
         if (hit.transform.CompareTag("sand"))
         {
-            //TODO: make a particle system.
-            Instantiate(test, hit.point, Quaternion.identity);
+            Instantiate(sandParticle, hit.point, Quaternion.LookRotation(hit.normal));
+            // auto destroyed
         }
         if (hit.transform.CompareTag("wall"))
         {
-            Debug.Log("wall");
-            Instantiate(bullethole, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(Vector3.up, hit.normal));
-
+            //Debug.Log("wall");
+            var bu = Instantiate(bullethole, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(Vector3.up, hit.normal));
+            var b = Instantiate(wallParticle, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(hit.normal));
+            Destroy(bu.gameObject, 8f);
+            // b auto destroyed
         }
         // PUT OTHER TAGGED OBJECTS HERE
 
