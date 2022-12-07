@@ -33,6 +33,7 @@ public class ThirdPersonShooter : MonoBehaviour
     StarterAssetsInputs staInputs;
     ThirdPersonController tpController;
     Animator animator;
+    Ray ray;
     float nextFire = 0.0f;
 
     void Awake()
@@ -61,7 +62,7 @@ public class ThirdPersonShooter : MonoBehaviour
             animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
 
             // ray to find target
-            Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2f, Screen.height / 2f));
+            ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2f, Screen.height / 2f));
             if (Physics.Raycast(ray, out RaycastHit hit, 500f, aimMask))
             {
                 target = hit.point;
@@ -104,7 +105,7 @@ public class ThirdPersonShooter : MonoBehaviour
         if (hit.transform.CompareTag("wall"))
         {
             //Debug.Log("wall");
-            var bu = Instantiate(bullethole, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(Vector3.up, hit.normal));
+            var bu = Instantiate(bullethole, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(Vector3.Cross(hit.normal,ray.direction).normalized, hit.normal));
             var b = Instantiate(wallParticle, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(hit.normal));
             Destroy(bu.gameObject, 8f);
             // b auto destroyed
