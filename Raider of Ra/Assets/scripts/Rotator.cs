@@ -13,10 +13,7 @@ public class Rotator : Movable
         //Debug.Log(transform.localEulerAngles);
         // Start the rotation coroutine
         StartCoroutine(RotateCoroutine(speed));
-
-        if (isLeaver)
-            if (nextTargetMovable != null)
-                nextTargetMovable.SetEngage(true);
+        
 
     }
 
@@ -37,5 +34,8 @@ public class Rotator : Movable
             yield return null;
         }
         engage = false;
+        if (isLeaver)
+            if (nextTargetMovable != null && transform.localRotation == endRotation)
+                nextTargetMovable.SetEngage(true);
     }
 }

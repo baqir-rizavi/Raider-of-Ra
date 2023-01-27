@@ -6,11 +6,8 @@ using static UnityEngine.UI.Image;
 
 public class ThirdPersonEngage : MonoBehaviour
 {
-    [SerializeField] float radius; 
-    [SerializeField] float distance;
-    [SerializeField] LayerMask layerMask;
-
     StarterAssetsInputs staInputs;
+    Collider otherCollider = null;
 
     private void Awake()
     {
@@ -21,17 +18,14 @@ public class ThirdPersonEngage : MonoBehaviour
     {
        if (staInputs.engage)
        {
-            RaycastHit hit;
-            if (Physics.SphereCast(transform.position, radius, transform.forward, out hit, distance, layerMask))
+            if (otherCollider)
             {
-                // If the sphere cast hits an object, log the object's name
-                //Debug.Log("Hit object: " + hit.collider.gameObject.name);
-                Movable m = hit.collider.gameObject.GetComponent<Movable>();
-                if (m != null)
+                Movable m = otherCollider.gameObject.GetComponent<Movable>();
+                if (m)
                     m.SetEngage(true);
                 else
                 {
-                    Movable mchild = hit.collider.gameObject.GetComponentInChildren<Movable>();
+                    Movable mchild = otherCollider.gameObject.GetComponentInChildren<Movable>();
                     if (mchild != null)
                         mchild.SetEngage(true);
                     else
@@ -39,5 +33,16 @@ public class ThirdPersonEngage : MonoBehaviour
                 }
             }
        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log("I " + gameObject.name + " him " + other.name);
+        otherCollider = other;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        otherCollider = null;
     }
 }

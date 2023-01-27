@@ -9,6 +9,8 @@ using Unity.VisualScripting;
 
 public class ThirdPersonShooter : MonoBehaviour
 {
+    [Header("player")]
+    [SerializeField] float health = 50f;
     [Header("Aim")]
     [SerializeField] CinemachineVirtualCamera aimCam;
     [SerializeField] float normalSensitivity;
@@ -20,6 +22,7 @@ public class ThirdPersonShooter : MonoBehaviour
     [SerializeField] Transform gunPoint;
     [SerializeField] Transform muzzleFlash;
     [SerializeField] float fireRate = 1.5f;
+    [SerializeField] float attackPower = 5f;
     [Header("Animation Rigs")]
     [SerializeField] Transform targetObjhead;
     [SerializeField] Transform targetObjchest;
@@ -77,7 +80,8 @@ public class ThirdPersonShooter : MonoBehaviour
             targetObjchest.position = target;
 
             // player rotation to aim
-            transform.forward = Vector3.Lerp(transform.forward, (target - transform.position).normalized, Time.deltaTime * 15f);
+            Vector3 targetOnXZPlane = Vector3.ProjectOnPlane((target - transform.position).normalized, Vector3.up);
+            transform.forward = Vector3.Lerp(transform.forward, targetOnXZPlane, Time.deltaTime * 15f);
         }
         else
         {
@@ -110,8 +114,29 @@ public class ThirdPersonShooter : MonoBehaviour
             Destroy(bu.gameObject, 8f);
             // b auto destroyed
         }
+        if (hit.transform.CompareTag("enemy"))
+        {
+            attack(hit);
+            Debug.Log("enemy hit");
+        }
         // PUT OTHER TAGGED OBJECTS HERE
 
+    }
+
+    void attack(RaycastHit hit)
+    {
+        hit.transform.GetComponentInParent<Enemy>().damage(attackPower);
+    }
+
+    public void damage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+            killPlayer();
+    }
+    void killPlayer() 
+    {
+        // reload scene
     }
 }
 
