@@ -19,4 +19,9 @@ public class Enemy : MonoBehaviour
         // do stuff here
         Destroy(gameObject);
     }
+
+    public void OnEnemyAttack(AnimationEvent animationEvent)
+    {
+        Debug.Log("player hit");
+    }
 }

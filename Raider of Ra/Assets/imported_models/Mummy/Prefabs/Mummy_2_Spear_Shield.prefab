@@ -2426,7 +2426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 486632}
   - component: {fileID: 9597376}
-  - component: {fileID: 11401102}
+  - component: {fileID: 5378341059419803534}
   m_Layer: 0
   m_Name: Mummy_2_Spear_Shield
   m_TagString: Untagged
@@ -2471,7 +2471,7 @@ Animator:
   m_GameObject: {fileID: 185540}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ca8d8a5559861f1439ed63d88e6446f1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 386dbcd0b7059ba40a891bcf3170c604, type: 2}
+  m_Controller: {fileID: 9100000, guid: df11e6180354c6444a8f41f03c91bf92, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2481,7 +2481,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &11401102
+--- !u!114 &5378341059419803534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2490,14 +2490,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 185540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd37b2b00eaa84d4398e0db5ddcbe53f, type: 3}
+  m_Script: {fileID: 11500000, guid: a0a96b9c71026e74283b7a7c91f0888e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runTr: Run
-  _atack_0_Tr: Atack
-  _dieTr: Die
-  _gd_Tr: Gd
-  _threaten: Threaten
 --- !u!1 &189298
 GameObject:
   m_ObjectHideFlags: 0

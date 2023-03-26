@@ -2059,7 +2059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 432808}
   - component: {fileID: 9597750}
-  - component: {fileID: 11497078}
+  - component: {fileID: 7116390709207825297}
   m_Layer: 0
   m_Name: Mummy_3_Axe
   m_TagString: Untagged
@@ -2104,7 +2104,7 @@ Animator:
   m_GameObject: {fileID: 175016}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ca8d8a5559861f1439ed63d88e6446f1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 25c7faf09a0715646a9a25de1da44c06, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7849fd78381325648bae05639ed3fdab, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2114,7 +2114,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &11497078
+--- !u!114 &7116390709207825297
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2123,14 +2123,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 175016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35faa87a9e119424dbaaa78dbe2dad60, type: 3}
+  m_Script: {fileID: 11500000, guid: a0a96b9c71026e74283b7a7c91f0888e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runTr: Run
-  _atack_0_Tr: Atack_0
-  _dieTr: Die
-  _gd_Tr: Gd
-  _atack_1: Atack_1
 --- !u!1 &176606
 GameObject:
   m_ObjectHideFlags: 0
