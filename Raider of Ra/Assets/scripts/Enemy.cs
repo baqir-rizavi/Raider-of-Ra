@@ -8,6 +8,15 @@ public class Enemy : MonoBehaviour
     float health = 20f;
     [SerializeField]
     float attackPower = 5f;
+
+    GameObject playerArmature;
+    ThirdPersonShooter player;
+
+    private void Awake()
+    {
+        playerArmature = GameObject.FindGameObjectWithTag("Player");
+        player = playerArmature.GetComponent<ThirdPersonShooter>();
+    }
     public void damage(float damage)
     {
         health -= damage;
@@ -23,5 +32,6 @@ public class Enemy : MonoBehaviour
     public void OnEnemyAttack(AnimationEvent animationEvent)
     {
         Debug.Log("player hit");
+        player.damage(attackPower);
     }
 }

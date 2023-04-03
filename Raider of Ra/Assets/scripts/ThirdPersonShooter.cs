@@ -136,6 +136,7 @@ public class ThirdPersonShooter : MonoBehaviour
     }
     void killPlayer() 
     {
+        Debug.Log("player died");
         // reload scene
     }
 }

@@ -3732,7 +3732,7 @@ Transform:
   - {fileID: 658039456}
   - {fileID: 467688250}
   m_Father: {fileID: 0}
-  m_RootOrder: 43
+  m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1255151321
 PrefabInstance:
@@ -4152,7 +4152,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1426724271
 MonoBehaviour:
@@ -7492,6 +7492,11 @@ PrefabInstance:
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 40725021}
+    - target: {fileID: 2399295657820667784, guid: 64ef1be182eb61848bfd86c55e654740,
+        type: 3}
+      propertyPath: aimSensitivity
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2399295657820667829, guid: 64ef1be182eb61848bfd86c55e654740,
         type: 3}
       propertyPath: m_Name
