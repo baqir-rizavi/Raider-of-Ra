@@ -1,9 +1,11 @@
 using Cinemachine;
 using PathCreation.Examples;
 using StarterAssets;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class OpeningSequence : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class OpeningSequence : MonoBehaviour
     Animator animator;
     CharacterController characterController;
     ThirdPersonShooter thirdPersonShooter;
+    AudioSource chopperAudio;
 
 
     bool rightPlayer = false;
@@ -38,6 +41,7 @@ public class OpeningSequence : MonoBehaviour
 
         heliCam.gameObject.SetActive(true);
         spinner = upperRotor.GetComponent<Spinner>();
+        chopperAudio = upperRotor.GetComponent<AudioSource>();
         spinner2 = backRotor.GetComponent<Spinner>();
     }
 
@@ -51,6 +55,7 @@ public class OpeningSequence : MonoBehaviour
                 player.position += player.right * 2f;
                 rightPlayer = true;
             }
+            p.gameObject.GetComponent<BoxCollider>().enabled = true;
             if (heliCam)
                 heliCam.gameObject.SetActive(false);
 
@@ -62,6 +67,7 @@ public class OpeningSequence : MonoBehaviour
             player.parent = null;
             SpeedController(spinner);
             SpeedController(spinner2);
+            VolumeController(chopperAudio);
             heliCam.gameObject.SetActive(false);
             if (spinner.GetSpeed() < 0.2f && spinner2.GetSpeed() < 0.2f)
             {
@@ -70,6 +76,11 @@ public class OpeningSequence : MonoBehaviour
         }
         if (Time.time > 63f)
             p.DecreaseSpeed();
+    }
+
+    private void VolumeController(AudioSource chopperAudio)
+    {
+        chopperAudio.volume = Mathf.Lerp(chopperAudio.volume, 0f, Time.deltaTime * 0.5f);
     }
 
     void SpeedController(Spinner s)

@@ -8,8 +8,12 @@ public class Rotator : Movable
     [SerializeField] bool isLeaver = true;
     [SerializeField] Movable nextTargetMovable;
     [SerializeField] Vector3 targetLocalEulerAngle;
+    [SerializeField] bool hasSound = false;
+
+    AudioSource audioT;
     protected override void Engage()
     {
+        audioT = GetComponent<AudioSource>();
         //Debug.Log(transform.localEulerAngles);
         // Start the rotation coroutine
         StartCoroutine(RotateCoroutine(speed));
@@ -19,6 +23,9 @@ public class Rotator : Movable
 
     IEnumerator RotateCoroutine(float speed)
     {
+        if (hasSound)
+            if (!audioT.isPlaying)
+                audioT.Play();
         // Calculate the desired rotation using Quaternion.Euler
         Quaternion endRotation = Quaternion.Euler(targetLocalEulerAngle);
 
@@ -34,6 +41,9 @@ public class Rotator : Movable
             yield return null;
         }
         engage = false;
+        if (hasSound)
+            if (audioT.isPlaying)
+                audioT.Stop();
         if (isLeaver)
             if (nextTargetMovable != null && transform.localRotation == endRotation)
                 nextTargetMovable.SetEngage(true);

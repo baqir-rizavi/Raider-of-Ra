@@ -394,7 +394,7 @@ namespace StarterAssets
 
         private void OnFootstep(AnimationEvent animationEvent)
         {
-            if (animationEvent.animatorClipInfo.weight > 0.5f)
+            if (animationEvent.animatorClipInfo.weight > 0.5f && _speed < 0.1f)
             {
                 if (FootstepAudioClips.Length > 0)
                 {

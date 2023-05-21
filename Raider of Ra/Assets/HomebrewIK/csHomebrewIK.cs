@@ -520,8 +520,8 @@ namespace FischlWorks
                 smoothTime);
         }
 
-
-
+        public bool applyFullWeights = false;
+        public bool _applyWeight = false;
         private void ApplyFootIK()
         {
             /* Position Handling */
@@ -532,8 +532,21 @@ namespace FischlWorks
             CopyByAxis(ref rightFootIKPositionBuffer, playerAnimator.GetIKPosition(AvatarIKGoal.RightFoot),
                 true, false, true);
 
-            playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, playerAnimator.GetFloat("LeftFootWeight"));
-            playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, playerAnimator.GetFloat("RightFootWeight"));
+            if (!applyFullWeights)
+            {
+                _applyWeight = false;
+                playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, playerAnimator.GetFloat("LeftFootWeight"));
+                playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, playerAnimator.GetFloat("RightFootWeight"));
+            }
+            else
+            {
+                if (!_applyWeight)
+                {
+                    playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1f);
+                    playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1f);
+                    _applyWeight = true;
+                }
+            }
 
             if (enableIKPositioning == true)
             {
@@ -555,9 +568,22 @@ namespace FischlWorks
                 Quaternion.FromToRotation(transform.up, rightFootIKRotationBuffer) *
                 playerAnimator.GetIKRotation(AvatarIKGoal.RightFoot);
 
-            playerAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, playerAnimator.GetFloat("LeftFootWeight"));
-            playerAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, playerAnimator.GetFloat("RightFootWeight"));
 
+            if (!applyFullWeights)
+            {
+                _applyWeight = false;
+                playerAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, playerAnimator.GetFloat("LeftFootWeight"));
+                playerAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, playerAnimator.GetFloat("RightFootWeight"));
+            }
+            else
+            {
+                if (!_applyWeight)
+                {
+                    playerAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1f);
+                    playerAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1f);
+                    _applyWeight = true;
+                }
+            }
             if (enableIKRotating == true)
             {
                 playerAnimator.SetIKRotation(AvatarIKGoal.LeftFoot, leftFootRotation);

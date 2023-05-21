@@ -6,6 +6,7 @@ using StarterAssets;
 using UnityEngine.Animations.Rigging;
 using System.Linq;
 using Unity.VisualScripting;
+using FischlWorks;
 
 public class ThirdPersonShooter : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class ThirdPersonShooter : MonoBehaviour
     [SerializeField] Transform muzzleFlash;
     [SerializeField] float fireRate = 1.5f;
     [SerializeField] float attackPower = 5f;
+    [SerializeField] AudioSource gunAudio;
     [Header("Animation Rigs")]
     [SerializeField] Transform targetObjhead;
     [SerializeField] Transform targetObjchest;
@@ -61,6 +63,7 @@ public class ThirdPersonShooter : MonoBehaviour
             crosshair.SetActive(true);
             gun.gameObject.SetActive(true);
             tpController.SetSensitivity(aimSensitivity);
+            GetComponent<csHomebrewIK>().applyFullWeights = true;
             // activation of aim animation
             animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
 
@@ -94,11 +97,13 @@ public class ThirdPersonShooter : MonoBehaviour
             animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
             headRig.weight = 0;
             chestRig.weight = 0;
+            GetComponent<csHomebrewIK>().applyFullWeights = false;
         }
     }
 
     void HandleShoot(RaycastHit hit)
     {
+        gunAudio.Play();
         Destroy(Instantiate(muzzleFlash, gunPoint.position, Quaternion.LookRotation(gunPoint.forward)).gameObject, 1f); // gun flash 
   
         if (hit.transform.CompareTag("sand"))
