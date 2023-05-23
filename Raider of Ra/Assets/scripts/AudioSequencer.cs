@@ -20,6 +20,7 @@ public class AudioSequencer : Movable
     private bool isPlaying = false;
     protected override void Engage()
     {
+        audioSource = GetComponent<AudioSource>();
         if (!isPlaying)
             PlaySequence();
     }
