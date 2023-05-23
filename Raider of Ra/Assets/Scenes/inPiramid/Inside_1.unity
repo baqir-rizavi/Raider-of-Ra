@@ -3385,7 +3385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87ebd3ffc89514488a236261b47b776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  engage: 0
+  engage: 1
   speed: 1
   audioSequence:
   - audioClip: {fileID: 8300000, guid: f4d2ac2254431ae43a657ffb4df2cd9d, type: 3}
@@ -3395,20 +3395,21 @@ MonoBehaviour:
   - audioClip: {fileID: 8300000, guid: f6ad8e8b9a67d8342851352dae3a22e7, type: 3}
     durationGap: 3
   - audioClip: {fileID: 8300000, guid: 25f2bcf1a6e8838429adc534cff487ab, type: 3}
-    durationGap: 9
+    durationGap: 20
   - audioClip: {fileID: 8300000, guid: 396e61c043f9b264188633c34efdfeda, type: 3}
     durationGap: 4
   - audioClip: {fileID: 8300000, guid: 9a5ad48985c4ddc49b3e7d239d0b12dd, type: 3}
     durationGap: 2.8
   - audioClip: {fileID: 8300000, guid: bd3160352f4a0a94bbae0525e65ec04b, type: 3}
-    durationGap: 12
+    durationGap: 20
   - audioClip: {fileID: 8300000, guid: a699cfcb180f2ca4294dfaecbc672f24, type: 3}
-    durationGap: 6
+    durationGap: 20
   - audioClip: {fileID: 8300000, guid: bdd46010a89713347b4b17ababb34fa3, type: 3}
-    durationGap: 3.2
+    durationGap: 10
   - audioClip: {fileID: 8300000, guid: 3cabce603c144b84883fae699fdaaf07, type: 3}
     durationGap: 0
   volume: 1
+  audioSource: {fileID: 947519600}
 --- !u!4 &947519602
 Transform:
   m_ObjectHideFlags: 0

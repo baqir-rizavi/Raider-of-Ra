@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AudioSequencer : Movable
 {
@@ -9,18 +10,18 @@ public class AudioSequencer : Movable
     public class AudioData
     {
         public AudioClip audioClip;
+        public string text;
         public float durationGap;
     }
-
+    [SerializeField] TextMeshProUGUI subts;
     public AudioData[] audioSequence;
     public float volume = 1.0f;
 
-    private AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
     private int currentIndex = 0;
     private bool isPlaying = false;
     protected override void Engage()
     {
-        audioSource = GetComponent<AudioSource>();
         if (!isPlaying)
             PlaySequence();
     }
@@ -42,6 +43,8 @@ public class AudioSequencer : Movable
             AudioData currentAudio = audioSequence[currentIndex];
             audioSource.clip = currentAudio.audioClip;
             audioSource.volume = volume;
+            if (subts != null && currentAudio.text != null)
+                subts.text = currentAudio.text;
             audioSource.Play();
             currentIndex++;
             // dividing by speed: more speed more short the gap is.

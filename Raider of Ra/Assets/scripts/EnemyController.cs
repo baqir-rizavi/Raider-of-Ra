@@ -16,6 +16,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     Transform target;
 
+    [SerializeField]
+    AudioSource audio;
+
     Animator anim;
     static int animationBlendSpeed = Animator.StringToHash("speed");
     static int animationAttack = Animator.StringToHash("attack");
@@ -23,6 +26,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
         if (target == null)
@@ -39,6 +43,8 @@ public class EnemyController : MonoBehaviour
 
         if (distance <= lookRadius) // hamla!!!
         {
+            if (!audio.isPlaying)
+                audio.Play();
             agent.SetDestination(target.position);
             if (distance <= agent.stoppingDistance)
             {
