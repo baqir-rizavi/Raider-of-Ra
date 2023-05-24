@@ -441,7 +441,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b1694d4dfb617f24e987deed7e7c6e62, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -666,31 +666,35 @@ MonoBehaviour:
   subts: {fileID: 1382698358}
   audioSequence:
   - audioClip: {fileID: 8300000, guid: b35f1ddfba7864b468dc982532c37f68, type: 3}
-    text: orieihoglrfuequgghegwd'
+    text: Hello, sergent do you copy me?
     durationGap: 4
   - audioClip: {fileID: 8300000, guid: cd213fd482fd1524fabe81744a160a59, type: 3}
-    text: rgfesdjurbfihjrvhnjea
+    text: Copy that agent Y, what's the situation?
     durationGap: 4
   - audioClip: {fileID: 8300000, guid: 404025ab7975fa24796f131f3955f103, type: 3}
-    text: reufhubbvgwegiofvhewihihsgr
+    text: We're about to launch mission delta. Your objective is to find the Spear
+      of Ra. We have reason to believe it's hidden inside a pyramid in the desert.
+      However, the entrance is locked, and we don't know how to open it yet
     durationGap: 16
   - audioClip: {fileID: 8300000, guid: 191f4a95d8931c342a0d9b83878cbdd4, type: 3}
-    text: sfdhubusruhkusvuhkrvsukhvag
+    text: Understood. What's the plan?
     durationGap: 3
   - audioClip: {fileID: 8300000, guid: 994d9edf5b4143f4da6201e5c05b1a65, type: 3}
-    text: 
+    text: Get to higher grounds and locate the pyramid. Then, find a way to open
+      the entrance. We'll provide you with any intel we can on the go. Good luck,
+      Agent X.
     durationGap: 47
   - audioClip: {fileID: 8300000, guid: eb605a9894bd88a4ab347e8a1e85ef9e, type: 3}
-    text: 
+    text: I'm on my own now.
     durationGap: 3
   - audioClip: {fileID: 8300000, guid: 4d04602a4f7cb094f8ac0d00d64d1587, type: 3}
-    text: 
+    text: Stay alert, and stay safe. Agent Y out.
     durationGap: 40
   - audioClip: {fileID: 8300000, guid: 654a8506c3f5d1f489d1a659fac08984, type: 3}
-    text: 
+    text: I can see it! The pyramid is up ahead
     durationGap: 3.2
   - audioClip: {fileID: 8300000, guid: 3fda55e7e935660498cb17e6a6a1d63e, type: 3}
-    text: 
+    text: Good job, Agent X. Get to the entrance and try to find a way to open it
     durationGap: 6.2
   volume: 1
   audioSource: {fileID: 213103726}
@@ -2229,7 +2233,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b7269b21538854149a3d12814ff957f1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -15813,25 +15817,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   engage: 0
   speed: 1
-  subts: {fileID: 0}
+  subts: {fileID: 1382698358}
   audioSequence:
   - audioClip: {fileID: 8300000, guid: 9b41fc93bb4dd0b48944cda209529113, type: 3}
-    text: 
+    text: The door is not opening.
     durationGap: 3
   - audioClip: {fileID: 8300000, guid: bbc5528b8c15db043abe59c7252457ab, type: 3}
-    text: 
+    text: Keep looking, Agent X. There must be a way in
     durationGap: 3
   - audioClip: {fileID: 8300000, guid: 73163a34e34625c418ac2f0ece586216, type: 3}
-    text: 
+    text: "There\u2019s a riddle on the entrance that says something."
     durationGap: 4
   - audioClip: {fileID: 8300000, guid: 0455cceb924868b4ab095f09b507f07c, type: 3}
-    text: 
+    text: Go crack it, Agent X.
     durationGap: 2.2
   - audioClip: {fileID: 8300000, guid: cfdec403997641b45b169b2648d68ab4, type: 3}
-    text: 
+    text: I've got it! The lever between the arms was the key.
     durationGap: 3.8
   - audioClip: {fileID: 8300000, guid: b1a510b74e66af24ea536ed8f10d363c, type: 3}
-    text: 
+    text: Great work, Agent X. Keep us updated.
     durationGap: 0
   volume: 1
   audioSource: {fileID: 6088834772359776098}

@@ -55,6 +55,7 @@ public class AudioSequencer : Movable
         {
             isPlaying = false;
             engage = false;
+            subts.text = "";
         }
     }
 }
