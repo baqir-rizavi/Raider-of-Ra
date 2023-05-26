@@ -7,11 +7,15 @@ using UnityEngine.Animations.Rigging;
 using System.Linq;
 using Unity.VisualScripting;
 using FischlWorks;
+using UnityEngine.UI;
 
 public class ThirdPersonShooter : MonoBehaviour
 {
     [Header("player")]
     [SerializeField] float health = 50f;
+    float curHealth = 50f;
+    [Header("UI")]
+    [SerializeField] Image healthBar;
     [Header("Aim")]
     [SerializeField] CinemachineVirtualCamera aimCam;
     [SerializeField] float normalSensitivity;
@@ -43,6 +47,8 @@ public class ThirdPersonShooter : MonoBehaviour
 
     void Awake()
     {
+        curHealth = health;
+        healthBar.fillAmount = 1;
         staInputs = GetComponent<StarterAssetsInputs>();
         tpController = GetComponent<ThirdPersonController>();
         animator = GetComponent<Animator>();
@@ -133,10 +139,16 @@ public class ThirdPersonShooter : MonoBehaviour
         hit.transform.GetComponentInParent<Enemy>().damage(attackPower);
     }
 
+    public static float NormalizeRange(float value, float min, float max)
+    {
+        return (value - min) / (max - min);
+    }
+
     public void damage(float damage)
     {
-        health -= damage;
-        if (health <= 0)
+        curHealth -= damage;
+        healthBar.fillAmount = NormalizeRange(curHealth,0,health);
+        if (curHealth <= 0)
             killPlayer();
     }
     void killPlayer() 
