@@ -2053,11 +2053,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 944940468}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -558, y: 311}
+  m_AnchoredPosition: {x: -833, y: 475}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91907757
@@ -15309,7 +15309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   engage: 0
-  speed: 2000
+  speed: 3000
   fromPosition: {x: -11.5, y: 4.21, z: 39.72}
   toPosition: {x: -11.5, y: 4.21, z: 32.01}
   hasCamera: 0
@@ -15948,8 +15948,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1683174099}
   - {fileID: 91907756}
+  - {fileID: 1683174099}
   m_Father: {fileID: 377648755}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
