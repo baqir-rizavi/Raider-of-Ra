@@ -8,6 +8,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using FischlWorks;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ThirdPersonShooter : MonoBehaviour
 {
@@ -47,6 +48,7 @@ public class ThirdPersonShooter : MonoBehaviour
 
     void Awake()
     {
+        PlayerPrefs.SetInt("replayLevel", SceneManager.GetActiveScene().buildIndex);
         curHealth = health;
         healthBar.fillAmount = 1;
         staInputs = GetComponent<StarterAssetsInputs>();
@@ -153,8 +155,7 @@ public class ThirdPersonShooter : MonoBehaviour
     }
     void killPlayer() 
     {
-        Debug.Log("player died");
-        // reload scene
+        SceneManager.LoadScene(4);
     }
 }
 
